@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @samplearticle = @articles.sample
   end
 
   def show

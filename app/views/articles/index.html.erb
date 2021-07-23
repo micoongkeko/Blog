@@ -1,46 +1,69 @@
-<div class="text-center">
-<h1>Articles</h1>
-</div>
-
-<div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      FEATURED ARTICLE
+<div class="home-feature d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row text-right">
+      <h1 class="col-md offset-md-8">
+        <strong>FEATURED</strong>
+      </h1>
     </div>
-    <div class="card-body">
-      <h4 class="card-title"><strong><%= @samplearticle.name %></strong></h4>
-      <p class="card-text"><%= @samplearticle.body %></p>
-      <div class="btn btn-primary">
-        <%= link_to "View article with comments.", @samplearticle, class: "a-primary" %>
-      </div>
+    <div class="row-space">
     </div>
-    <div class="card-footer text-muted">
-      Created on <%= @samplearticle.created_at.to_s.slice(0, 10) %>
+    <div class="row">
+      <h1 class="col-lg font-italic">
+        <strong><%= @samplearticle.name %></strong>
+      </h1>
+    </div>
+    <div class="row">
+      <h4 class="col-md-9">
+        <%= @samplearticle.body.slice(0,500) %>...
+      </h4>
+    </div>
+    <div class="row-space">
+    </div>
+    <div class="row">
+      <%= button_to "View with comments", @samplearticle, class: "btn btn-light btn-lg action-button", method: :get%>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <%# <div class="row"> %>
-  <% @articles.each do |article| %>
-  <div class="col-sm-4 d-flex text-center border border-primary">
-    <div class="card" style="width: 25rem;">
-      <div class="card-body">
-        <h4 class="card-title"><strong><%= article.name %></strong></h4>
-        <p class="card-text"><%= article.body %></p>
-        <%# <a href="#" class="btn btn-primary"></a> %>
-        <div class="btn btn-primary">
-          <%= link_to "View article with comments.", article, class: "a-primary" %>
+<div class="container articles-grid d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col-lg-12 mb-5">
+      <h1>
+      <strong>
+        PICK A POST!
+      </strong>
+      </h1>
+    </div>
+    <%# <div class="row-space">
+    </div> %>
+    <% @articles.each do |article| %>
+    <div class="col-sm-4 d-flex text-center justify-content-center">
+      <div class="card mb-4">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+          <h4 class="card-title"><strong><%= article.name %></strong></h4>
+          <p class="card-text"><%= article.body.slice(0,80)%>...</p>
+          <div class="btn btn-primary">
+            <%= link_to "View full article with comments.", article, class: "a-primary" %>
+          </div>
         </div>
-
       </div>
-    <%# </div> %>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
 
 
 
 
-<%= link_to "Create a New Article!", new_article_path %>
+  <%# FEATURED ARTICLE CARD COMMENTED %>
+  <% if false %>
+    <div class="card text-center mb-3">
+      <div class="card-header">
+        FEATURED ARTICLE
+      </div>
+      <div class="card-body">
+
+      </div>
+    </div>
+    <% end %>
+    <%# END OF FEATURED ARTICLE CARD COMMENT %>

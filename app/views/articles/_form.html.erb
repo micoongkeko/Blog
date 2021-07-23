@@ -1,21 +1,21 @@
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+  <div class="mb-3 col-md-6">
+    <%= form.label :name, class: "form-label" %><br>
+    <%= form.text_field :name, class: "form-control" %>
     <% article.errors.full_messages_for(:name).each do |message| %>
-      <div><%= message %></div>
+      <div class="form-text form-text-validation"><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+  <div class="mb-3 col-md-8">
+    <%= form.label :body, class: "form-label"  %><br>
+    <%= form.text_area :body, class: "form-control", rows: "8"  %>
     <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+      <div class="form-text form-text-validation"><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
